@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { DIRECT_URL, INSTITUTIONAL } from "@/lib/store";
+import { CRAFT, DIRECT_URL, INSTITUTIONAL } from "@/lib/store";
 import { Reveal } from "../Reveal";
 
 /** Fechamento: "Toda grande faixa tem um feat." num disco girando com o patch no selo. */
@@ -49,8 +49,11 @@ export default function Record() {
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className="mt-4 font-serif leading-[0.95] tracking-[-0.02em] text-[clamp(3rem,7vw,7.5rem)]">
-              Feito à mão. <em className="text-ink-2">Não em massa.</em>
+              {CRAFT.title[0]} <span className="text-ink-2">{CRAFT.title[1]}</span>
             </h2>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-2">{CRAFT.text}</p>
           </Reveal>
           <Reveal delay={0.16}>
             <a
