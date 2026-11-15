@@ -4,24 +4,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Marquee from "./Marquee";
 import { Wordmark, InstagramIcon } from "./Icons";
 import { TapeButton } from "./Brim";
-import { cart, useCart } from "@/lib/cart";
 import { DIRECT_URL, INSTAGRAM_URL } from "@/lib/store";
 
 // Colunas de navegação no estilo Brim: rótulo entre parênteses + duas linhas.
 const NAV = [
   { href: "/produtos", tag: "Coleção", lines: ["Camisetas", "Lote 001"], label: "Produtos" },
   { href: "/sobre", tag: "Sobre", lines: ["Feito à mão", "Não em massa"], label: "Sobre & contato" },
-  { href: "/conta", tag: "Conta", lines: ["Iniciar sessão", "Criar uma conta"], label: "Minha conta" },
+  { href: "/trocas", tag: "Trocas", lines: ["Regra clara", "Tudo no direct"], label: "Trocas" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
-  const { lines } = useCart();
-  const count = lines.reduce((s, l) => s + l.qty, 0);
   const [menuFor, setMenuFor] = useState<string | null>(null);
   const open = menuFor === pathname; // fecha sozinho ao trocar de página
 
@@ -75,26 +72,6 @@ export default function Header() {
                 Fale no direct
               </TapeButton>
             </span>
-            <button
-              onClick={cart.open}
-              aria-label={`Abrir carrinho (${count} ${count === 1 ? "item" : "itens"})`}
-              className="relative flex size-10 items-center justify-center"
-            >
-              <ShoppingBag className="size-5" strokeWidth={1.5} />
-              <AnimatePresence>
-                {count > 0 && (
-                  <motion.span
-                    key={count}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                    className="absolute top-1 right-0.5 flex size-4 items-center justify-center rounded-full bg-cream font-mono text-[9px] text-ink"
-                  >
-                    {count}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </button>
           </div>
         </div>
       </div>

@@ -100,7 +100,7 @@ export default function Units() {
             <Thread className="absolute top-[6%] left-[2%] h-[72%] w-[34%] text-ink" delay={0.2} />
           </span>
           ote 001
-          <sup className="ml-2 align-top font-serif text-[0.18em] italic normal-case">{String(PRODUCTS.length).padStart(2, "0")}</sup>
+          <sup className="ml-2 align-top font-serif text-[0.18em] normal-case">{String(PRODUCTS.length).padStart(2, "0")}</sup>
         </h2>
         <nav aria-label="Coleção" className="font-mono text-xs tracking-[0.15em] uppercase">
           <p className="mb-3 text-cream/45">( Coleção )</p>

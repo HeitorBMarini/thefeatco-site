@@ -36,7 +36,7 @@ export default function Welcome() {
             <motion.span style={{ x: leftX }} className="block">
               {WELCOME.title[0]}
             </motion.span>
-            <motion.span style={{ x: rightX }} className="block pl-[8%] italic text-ink-2">
+            <motion.span style={{ x: rightX }} className="block pl-[8%] text-ink-2">
               {WELCOME.title[1]}
             </motion.span>
           </h2>
@@ -45,6 +45,15 @@ export default function Welcome() {
               <span className="mt-3 hidden w-12 shrink-0 text-thread stitch sm:block" aria-hidden />
               <p className="text-lg leading-relaxed text-ink-2 sm:text-xl">{WELCOME.text}</p>
             </div>
+            <ol className="mt-10 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs tracking-[0.25em] uppercase">
+              {WELCOME.steps.map((step, i) => (
+                <li key={step} className="flex items-baseline gap-2">
+                  <span className="text-thread">{String(i + 1).padStart(2, "0")}</span>
+                  <span>·</span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
           </Reveal>
         </div>
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal, SplitWords } from "@/components/Reveal";
 import { InstagramIcon } from "@/components/Icons";
-import ContactForm from "./ContactForm";
+import Link from "next/link";
 import { ADBAR, DIRECT_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, INSTITUTIONAL, WELCOME } from "@/lib/store";
 
 export const metadata: Metadata = { title: "Sobre & contato" };
@@ -38,7 +38,7 @@ export default function SobrePage() {
           <h2 className="font-serif text-[clamp(2.75rem,6vw,6rem)] leading-[0.92]">
             {WELCOME.title[0]}
             <br />
-            <span className="italic text-ink-2">{WELCOME.title[1]}</span>
+            <span className="text-ink-2">{WELCOME.title[1]}</span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
@@ -59,7 +59,7 @@ export default function SobrePage() {
           <div>
             <p className="font-mono text-[11px] tracking-[0.3em] text-paper/50 uppercase">Contato</p>
             <h2 className="mt-4 font-display text-[clamp(3.5rem,8vw,8rem)] leading-[0.88] uppercase">
-              Fale no <span className="italic">direct</span>
+              Fale no <span className="font-serif normal-case">direct</span>
             </h2>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
@@ -80,7 +80,21 @@ export default function SobrePage() {
               </a>
             </div>
           </div>
-          <ContactForm />
+          <div className="space-y-8 lg:pt-16">
+            {[
+              ["Atendimento", "Só pelo direct do @thefeat.co. Dúvida de tamanho, pedido ou troca, é lá."],
+              ["Pagamento", "Pix com 6% off ou cartão em até 2x sem juros. Frete calculado na finalização."],
+              ["Lote", "Nº 001 · 66 peças · Sem reposição garantida."],
+            ].map(([t, d]) => (
+              <div key={t} className="border-t border-paper/25 pt-5">
+                <p className="font-mono text-[11px] tracking-[0.25em] text-paper/60 uppercase">{t}</p>
+                <p className="mt-2 text-lg leading-relaxed">{d}</p>
+              </div>
+            ))}
+            <Link href="/trocas" className="inline-block border-b border-paper font-mono text-xs tracking-[0.2em] uppercase">
+              Ver regras de troca →
+            </Link>
+          </div>
         </div>
       </section>
     </>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { InstagramIcon } from "./Icons";
-import { COPYRIGHT, DIRECT_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, INSTITUTIONAL } from "@/lib/store";
+import { COPYRIGHT, LEGAL_LINE, DIRECT_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, INSTITUTIONAL } from "@/lib/store";
 
 export default function Footer() {
   return (
@@ -16,7 +16,8 @@ export default function Footer() {
             <Link href="/" className="hover:text-thread">Início</Link>
             <Link href="/produtos" className="hover:text-thread">Produtos</Link>
             <Link href="/sobre" className="hover:text-thread">Sobre & contato</Link>
-            <Link href="/conta" className="hover:text-thread">Minha conta</Link>
+            <Link href="/trocas" className="hover:text-thread">Trocas</Link>
+            <Link href="/termos" className="hover:text-thread">Termos de compra</Link>
           </nav>
           <div className="flex flex-col gap-3 font-mono text-xs tracking-[0.2em] uppercase">
             <span className="mb-2 text-paper/40">Fale com a gente</span>
@@ -43,8 +44,11 @@ export default function Footer() {
         </p>
 
         <div className="mt-8 flex flex-col gap-2 border-t border-paper/15 pt-6 font-mono text-[10px] tracking-[0.15em] text-paper/50 uppercase sm:flex-row sm:justify-between">
-          <span>{COPYRIGHT}</span>
-          <span>Protótipo de redesign · compra real na loja Nuvemshop</span>
+          <span>
+            {COPYRIGHT}
+            {LEGAL_LINE && <span className="block pt-1 normal-case tracking-normal text-paper/35">{LEGAL_LINE}</span>}
+          </span>
+          <span>Atendimento só pelo direct · Pix ou cartão</span>
         </div>
       </div>
     </footer>

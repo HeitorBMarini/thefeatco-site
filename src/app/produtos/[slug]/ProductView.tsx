@@ -3,21 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check } from "lucide-react";
-import { cart } from "@/lib/cart";
 import { brl, type Product, type Size } from "@/lib/store";
+import FitFinder from "@/components/product/FitFinder";
+import TermsModal from "@/components/product/TermsModal";
 
 export default function ProductView({ p }: { p: Product }) {
   const [active, setActive] = useState(0);
   const [size, setSize] = useState<Size>("P");
-  const [added, setAdded] = useState(false);
+  const [terms, setTerms] = useState(false);
+  const [fitOpen, setFitOpen] = useState(false);
   const [zoom, setZoom] = useState<{ x: number; y: number } | null>(null);
-
-  function add() {
-    cart.add(p.slug, size);
-    setAdded(true);
-    window.setTimeout(() => setAdded(false), 1800);
-  }
 
   return (
     <section className="mx-auto grid max-w-[1600px] gap-10 px-4 pt-6 pb-24 sm:px-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16">
@@ -111,42 +106,43 @@ export default function ProductView({ p }: { p: Product }) {
           </div>
         </fieldset>
 
+        <button
+          type="button"
+          onClick={() => setFitOpen((v) => !v)}
+          aria-expanded={fitOpen}
+          className="mt-4 font-mono text-[11px] tracking-[0.2em] underline underline-offset-4 uppercase"
+        >
+          {fitOpen ? "Fechar provador" : "Não sabe o tamanho? Descubra em 10 segundos"}
+        </button>
+        {fitOpen && (
+          <div className="mt-4">
+            <FitFinder
+              onPick={(s) => {
+                setSize(s);
+                setFitOpen(false);
+              }}
+            />
+          </div>
+        )}
+
         <div className="mt-8 grid gap-2">
           <button
-            onClick={add}
-            className="relative flex h-14 items-center justify-center overflow-hidden rounded-full bg-red font-mono text-xs tracking-[0.25em] text-cream uppercase transition-colors hover:bg-red-deep"
+            type="button"
+            onClick={() => setTerms(true)}
+            className="flex h-14 items-center justify-center rounded-full bg-red font-mono text-xs tracking-[0.25em] text-cream uppercase transition-colors hover:bg-red-deep"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              {added ? (
-                <motion.span
-                  key="ok"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  className="flex items-center gap-2"
-                >
-                  <Check className="size-4" /> Adicionado ao carrinho!
-                </motion.span>
-              ) : (
-                <motion.span key="buy" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -20, opacity: 0 }}>
-                  Comprar
-                </motion.span>
-              )}
-            </AnimatePresence>
+            Comprar · Tamanho {size}
           </button>
-          <a
-            href={p.storeUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="flex h-12 items-center justify-center rounded-full border border-ink font-mono text-[11px] tracking-[0.2em] uppercase transition-colors hover:bg-ink hover:text-paper"
-          >
-            Comprar na loja oficial ↗
-          </a>
           <p className="text-xs leading-relaxed text-muted">
-            Protótipo: o botão &ldquo;Comprar&rdquo; usa um carrinho de demonstração. O pedido real é feito na loja
-            Nuvemshop da FeaT&Co.
+            Na próxima tela, confirme o tamanho {size}, calcule o frete e finalize o pagamento com segurança.
           </p>
         </div>
+        <TermsModal
+          open={terms}
+          onClose={() => setTerms(false)}
+          href={p.storeUrl}
+          what={`${p.name} · Tamanho ${size} · ${brl(p.price)} ou ${brl(p.pixPrice)} no Pix`}
+        />
 
         <div className="mt-10 space-y-3 border-t border-ink/15 pt-8 text-[15px] leading-relaxed text-ink-2">
           {p.description.map((d) => (

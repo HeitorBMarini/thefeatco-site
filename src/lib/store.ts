@@ -10,12 +10,63 @@ export const ADBAR = ["LOTE 001", "FEITO À MÃO · NÃO EM MASSA", "6% OFF NO P
 
 export const WELCOME = {
   title: ["Ela chega pronta", "Você termina"],
-  text: "O patch já vem desfiado e continua desfiando a cada uso e a cada lavagem. Quanto mais você vive com ela, mais ela fica com a sua personalidade.",
+  text: "O patch já chega desfiado. Você continua: a cada uso e a cada lavagem, ele fica mais destroyed. Quanto mais você vive com ela, mais ela fica com a sua cara.",
+  steps: ["Usa", "Lava", "Repete"],
 };
+
+export const CRAFT = {
+  kicker: "Feito à mão · Não em massa",
+  title: ["A máquina só costura.", "A mão faz o resto."],
+  text: "Cada patch é desfiado à mão, fio por fio. Nenhuma sai igual à outra.",
+};
+
+// Dados de quem vende (obrigatórios no comércio eletrônico, Decreto 7.962/2013). Preencher antes de divulgar.
+// Enquanto estiver vazio, nada aparece no site.
+export const LEGAL = {
+  name: "",
+  document: "",
+  address: "",
+};
+export const LEGAL_LINE = [LEGAL.name, LEGAL.document, LEGAL.address].filter(Boolean).join(" · ");
+
+export const TERMS_SUMMARY = [
+  "O desfiado do patch faz parte da peça e não é defeito.",
+  "Troca só por erro de tamanho, pedida pelo direct em até 7 dias após a compra, com o motivo explicado e o frete pago por você.",
+  "Qualquer devolução precisa de fotos aprovadas antes do envio.",
+  "Peça devolvida usada, lavada ou danificada não tem reembolso e volta para você.",
+  "Seu direito de desistir em até 7 dias após o recebimento está garantido.",
+];
+
+export const TERMS = [
+  { title: "Quem somos", text: `FeaT&Co${LEGAL_LINE ? `, operada por ${LEGAL_LINE}` : ""}. Atendimento exclusivo pelo direct do @thefeat.co.` },
+  { title: "As peças", text: "Cada camiseta recebe um patch aplicado e desfiado à mão. Fios soltos e pequenas diferenças entre peças fazem parte do design. Cores podem variar conforme a tela. Algumas imagens de campanha foram produzidas com recursos digitais. Lote limitado, sem reposição garantida." },
+  { title: "Preço e pagamento", text: "R$ 148,00 no cartão, em até 2x sem juros, ou 6% de desconto no Pix. O pedido só é confirmado após a aprovação do pagamento." },
+  { title: "Envio", text: "Postagem em até 2 dias úteis após a confirmação. Frete e prazo calculados pelo CEP. Endereço incorreto gera novo frete por conta do cliente. Avarias de transporte devem ser informadas em até 7 dias, com fotos." },
+  { title: "Regra para qualquer devolução", text: "Solicitação só pelo direct, com o número do pedido. Fotos da peça inteira, frente, costas, patch e etiqueta antes de qualquer envio. A peça deve voltar sem uso, sem lavagem, sem manchas, odores ou danos e com etiqueta. Fora dessas condições, a troca ou o reembolso são recusados e a peça é enviada de volta, com frete por sua conta." },
+  { title: "Troca de tamanho", text: "Não fazemos trocas por gosto, cor ou modelo. Troca de tamanho em até 7 dias após a compra, explicando o motivo, sujeita ao estoque. Fretes por conta do cliente. Uma troca por pedido." },
+  { title: "Direito de arrependimento", text: "Você pode desistir em até 7 dias após o recebimento (art. 49 do CDC). O envio de volta é feito e pago por você. O reembolso acontece somente após a peça chegar e ser aprovada. Sem a peça devolvida, não há reembolso." },
+  { title: "Defeito de fabricação", text: "Informe em até 90 dias, com fotos. Confirmado o defeito, pagamos os fretes e trocamos a peça ou devolvemos o valor. O desfiado do patch não é defeito." },
+  { title: "Cuidados", text: "Lave do avesso, em água fria e ciclo delicado. Não use alvejante, secadora nem ferro sobre o patch." },
+  { title: "Dados pessoais", text: "Usamos seus dados apenas para processar e entregar o pedido, conforme a LGPD. Não vendemos nem compartilhamos seus dados com terceiros além do necessário para pagamento e entrega." },
+  { title: "Menores de 18 anos", text: "Compras devem ter autorização do responsável legal." },
+  { title: "Aceite", text: "Ao marcar \"Li e concordo\" antes da compra, você confirma que leu e aceitou estes termos." },
+];
 
 export const INSTITUTIONAL = {
   kicker: "FeaT&Co · Lote 001",
   title: "Toda grande faixa tem um feat.",
+};
+
+export const TROCAS = {
+  intro: "Peça feita à mão tem regra clara. Tudo pelo direct do @thefeat.co.",
+  rules: [
+    { title: "Troca só de tamanho", text: "Em até 7 dias após a compra, explicando o motivo. O frete de ida e volta é por sua conta, e a troca depende de ter o tamanho no estoque. Não fazemos trocas por gosto, cor ou modelo. Uma troca por pedido." },
+    { title: "Foto antes de tudo", text: "Nenhuma devolução sem fotos aprovadas antes do envio: peça inteira, frente, costas, patch e etiqueta. A peça volta como chegou: sem uso, sem lavagem, sem manchas, odores ou danos e com etiqueta. Fora dessas condições, a troca ou o reembolso são recusados e a peça é enviada de volta, com frete por sua conta." },
+    { title: "Seu direito garantido", text: "Você pode desistir em até 7 dias após receber (art. 49 do CDC). O envio de volta é feito e pago por você. O reembolso acontece somente depois que a peça chega e é conferida." },
+    { title: "Defeito de fabricação", text: "Informe em até 90 dias, com fotos. Confirmado o defeito, pagamos os fretes e trocamos a peça ou devolvemos o valor. O desfiado do patch faz parte da peça e não é defeito." },
+    { title: "Envio", text: "Postagem em até 2 dias úteis após a confirmação do pagamento. Endereço incorreto gera novo frete por conta do cliente. Avarias de transporte devem ser informadas em até 7 dias, com fotos." },
+    { title: "Cuidados", text: "Lave do avesso, em água fria e ciclo delicado. Não use alvejante, secadora nem ferro sobre o patch." },
+  ],
 };
 
 export const COPYRIGHT = "Copyright FeaT&Co - 2026. Todos os direitos reservados.";
@@ -44,10 +95,11 @@ export type Product = {
   storeUrl: string;
 };
 
-const DESCRIPTION = [
-  "Camiseta oversized corte boxy, reto e estruturado. Off-white com bordado FT&Co em preto, desfiado à mão, cada peça sai única.",
-  "Primeiro lote, edição limitada.",
-  "Modelagem: oversized",
+const description = (bordado: string) => [
+  `Camiseta oversized de corte boxy, reto e estruturado. Patch FT desfiado à mão e &Co bordado em ${bordado}. Cada peça sai única.`,
+  "Ela chega pronta. Você termina. O patch já chega desfiado e, a cada uso e a cada lavagem, fica mais destroyed. O desfiado faz parte da peça e não é defeito.",
+  "Cuidados: lave do avesso, em água fria e ciclo delicado. Não use alvejante, secadora nem ferro sobre o patch.",
+  "Primeiro lote, edição limitada. Sem reposição garantida.",
 ];
 
 export const PRODUCTS: Product[] = [
@@ -58,7 +110,7 @@ export const PRODUCTS: Product[] = [
     price: 148,
     pixPrice: 139.12,
     installments: { count: 2, value: 74 },
-    description: DESCRIPTION,
+    description: description("preto"),
     sizes: [
       { size: "P", sku: "FTC-CAM-OW-P", available: true },
       { size: "M", sku: "FTC-CAM-OW-M", available: true },
@@ -79,7 +131,7 @@ export const PRODUCTS: Product[] = [
     price: 148,
     pixPrice: 139.12,
     installments: { count: 2, value: 74 },
-    description: DESCRIPTION,
+    description: description("off-white"),
     sizes: [
       { size: "P", sku: "FTC-CAM-PT-P", available: true },
       { size: "M", sku: "FTC-CAM-PT-M", available: true },
