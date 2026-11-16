@@ -10,7 +10,7 @@ export default function Record() {
   const reduce = useReducedMotion();
   const ring = `${INSTITUTIONAL.title.toUpperCase()} · ${INSTITUTIONAL.kicker.toUpperCase()} · `.repeat(2);
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
+    <section className="relative overflow-hidden border-t border-ink/10 py-28 sm:py-40">
       <div className="mx-auto grid max-w-[1600px] items-center gap-14 px-4 sm:px-8 lg:grid-cols-2">
         <div className="relative mx-auto aspect-square w-full max-w-[min(560px,80svh)]">
           <motion.div
@@ -44,12 +44,9 @@ export default function Record() {
         </div>
 
         <div>
-          <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.3em] text-muted uppercase">{INSTITUTIONAL.kicker}</p>
-          </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mt-4 font-serif leading-[0.95] tracking-[-0.02em] text-[clamp(3rem,7vw,7.5rem)]">
-              {CRAFT.title[0]} <span className="text-ink-2">{CRAFT.title[1]}</span>
+            <h2 className="font-serif leading-[1] text-[clamp(2.5rem,5.5vw,5.5rem)]">
+              {CRAFT.title[0]} <br /><span className="text-ink-2">{CRAFT.title[1]}</span>
             </h2>
           </Reveal>
           <Reveal delay={0.12}>

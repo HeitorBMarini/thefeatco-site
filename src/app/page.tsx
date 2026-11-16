@@ -1,18 +1,14 @@
 import Hero from "@/components/home/Hero";
-import Units from "@/components/home/Units";
+import Drop from "@/components/home/Drop";
 import Welcome from "@/components/home/Welcome";
-import Lookbook from "@/components/home/Lookbook";
 import Record from "@/components/home/Record";
-import Marquee from "@/components/Marquee";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Units />
+      <Drop />
       <Welcome />
-      <Lookbook />
-      <Marquee dark={false} />
       <Record />
     </>
   );
