@@ -14,7 +14,6 @@ import { DIRECT_URL, INSTAGRAM_URL } from "@/lib/store";
 const NAV = [
   { href: "/produtos", tag: "Coleção", lines: ["Camisetas", "Lote 001"], label: "Produtos" },
   { href: "/sobre", tag: "Sobre", lines: ["Feito à mão", "Não em massa"], label: "Sobre & contato" },
-  { href: "/trocas", tag: "Trocas", lines: ["Regra clara", "Tudo no direct"], label: "Trocas" },
 ];
 
 export default function Header() {
@@ -42,7 +41,7 @@ export default function Header() {
             <Wordmark invert className="h-6 w-auto sm:h-7" />
           </Link>
 
-          <nav className="hidden flex-1 md:grid md:grid-cols-3" aria-label="Principal">
+          <nav className="hidden flex-1 md:grid md:grid-cols-2" aria-label="Principal">
             {NAV.map((n) => (
               <Link
                 key={n.href}

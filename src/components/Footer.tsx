@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <p className="font-mono text-[11px] tracking-[0.25em] text-paper/50 uppercase">{INSTITUTIONAL.kicker}</p>
-            <p className="mt-4 max-w-md font-display text-5xl leading-[0.95] uppercase sm:text-6xl">{INSTITUTIONAL.title}</p>
+            <p className="mt-4 max-w-md font-display text-5xl leading-[0.95] uppercase sm:text-6xl">Feito à mão. Não em massa.</p>
           </div>
           <nav aria-label="Rodapé" className="flex flex-col gap-3 font-mono text-xs tracking-[0.2em] uppercase">
             <span className="mb-2 text-paper/40">Navegue</span>
