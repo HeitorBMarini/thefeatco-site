@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { brl, type Product } from "@/lib/store";
+import { brl, stockLabel, type Product } from "@/lib/store";
 
 export default function ProductCard({ p, index, sizes }: { p: Product; index: number; sizes: string }) {
   return (
@@ -37,6 +37,14 @@ export default function ProductCard({ p, index, sizes }: { p: Product; index: nu
       <div className="mt-4 flex items-start justify-between gap-4">
         <div>
           <h3 className="font-display text-2xl leading-none uppercase sm:text-3xl">{p.name}</h3>
+          {(() => {
+            const low = p.sizes.filter((s) => s.stock > 0 && s.stock <= 4);
+            return low.length ? (
+              <p className="mt-2 font-mono text-[11px] tracking-[0.15em] text-red uppercase">
+                {stockLabel(low[0].stock)} no {low.map((s) => s.size).join(" e ")}
+              </p>
+            ) : null;
+          })()}
           <p className="mt-1 font-mono text-[11px] tracking-[0.15em] text-muted uppercase">
             {p.installments.count}x de {brl(p.installments.value)} sem juros
           </p>

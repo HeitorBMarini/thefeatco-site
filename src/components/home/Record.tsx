@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { CRAFT, DIRECT_URL, INSTITUTIONAL } from "@/lib/store";
+import Link from "next/link";
+import { CRAFT, INSTITUTIONAL, LOTE_DEADLINE } from "@/lib/store";
 import { Reveal } from "../Reveal";
 
 /** Fechamento: "Toda grande faixa tem um feat." num disco girando com o patch no selo. */
@@ -53,14 +54,15 @@ export default function Record() {
             <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-2">{CRAFT.text}</p>
           </Reveal>
           <Reveal delay={0.16}>
-            <a
-              href={DIRECT_URL}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href="/produtos"
               className="group mt-10 inline-flex items-center gap-3 border-b border-ink pb-1 font-mono text-xs tracking-[0.2em] uppercase"
             >
-              Fale no direct <span className="transition-transform group-hover:translate-x-1">↗</span>
-            </a>
+              Garantir a minha <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+            <p className="mt-4 font-mono text-[11px] tracking-[0.2em] text-muted uppercase">
+              Lote 001 encerra {LOTE_DEADLINE}. Sem reposição.
+            </p>
           </Reveal>
         </div>
       </div>

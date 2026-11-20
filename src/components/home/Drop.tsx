@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { brl, PRODUCTS } from "@/lib/store";
+import { brl, PRODUCTS, stockLabel } from "@/lib/store";
 
 /** As duas camisetas, com bastante respiro. */
 export default function Drop() {
@@ -25,6 +25,14 @@ export default function Drop() {
                 {brl(p.price)} <span className="text-muted">· {brl(p.pixPrice)} no Pix</span>
               </p>
             </div>
+            {(() => {
+              const low = p.sizes.filter((s) => s.stock > 0 && s.stock <= 4);
+              return low.length ? (
+                <p className="mt-2 font-mono text-[11px] tracking-[0.2em] text-red uppercase">
+                  {stockLabel(low[0].stock)} no {low.map((s) => s.size).join(" e ")}
+                </p>
+              ) : null;
+            })()}
           </Link>
         ))}
       </div>
