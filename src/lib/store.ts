@@ -6,10 +6,7 @@ export const INSTAGRAM_URL = "https://instagram.com/thefeat.co";
 export const DIRECT_URL = "https://ig.me/m/thefeat.co";
 export const INSTAGRAM_HANDLE = "@thefeat.co";
 
-// Prazo do Lote 001. Mudar aqui muda no site inteiro.
-export const LOTE_DEADLINE = "30/11";
-
-export const ADBAR = [`LOTE 001 · ENCERRA ${LOTE_DEADLINE}`, "SEM REPOSIÇÃO", "FEITO À MÃO · NÃO EM MASSA", "6% OFF NO PIX"];
+export const ADBAR = ["LOTE 001", "SEM REPOSIÇÃO", "FEITO À MÃO · NÃO EM MASSA", "6% OFF NO PIX"];
 
 export const WELCOME = {
   title: ["Ela chega pronta", "Você termina"],
@@ -93,8 +90,7 @@ export type Product = {
   pixPrice: number;
   installments: { count: number; value: number };
   description: string[];
-  // stock: atualizar à mão conforme a Nuvemshop (Produtos > Estoque).
-  sizes: { size: Size; sku: string; available: boolean; stock: number }[];
+  sizes: { size: Size; sku: string; available: boolean }[];
   images: { src: string; alt: string }[];
   storeUrl: string;
 };
@@ -116,9 +112,9 @@ export const PRODUCTS: Product[] = [
     installments: { count: 2, value: 74 },
     description: description("preto"),
     sizes: [
-      { size: "P", sku: "FTC-CAM-OW-P", available: true, stock: 6 },
-      { size: "M", sku: "FTC-CAM-OW-M", available: true, stock: 7 },
-      { size: "G", sku: "FTC-CAM-OW-G", available: true, stock: 4 },
+      { size: "P", sku: "FTC-CAM-OW-P", available: true },
+      { size: "M", sku: "FTC-CAM-OW-M", available: true },
+      { size: "G", sku: "FTC-CAM-OW-G", available: true },
     ],
     images: [
       { src: "/img/ow-1.webp", alt: "Camiseta Boxy Off-White, frente" },
@@ -137,9 +133,9 @@ export const PRODUCTS: Product[] = [
     installments: { count: 2, value: 74 },
     description: description("off-white"),
     sizes: [
-      { size: "P", sku: "FTC-CAM-PT-P", available: true, stock: 6 },
-      { size: "M", sku: "FTC-CAM-PT-M", available: true, stock: 7 },
-      { size: "G", sku: "FTC-CAM-PT-G", available: true, stock: 4 },
+      { size: "P", sku: "FTC-CAM-PT-P", available: true },
+      { size: "M", sku: "FTC-CAM-PT-M", available: true },
+      { size: "G", sku: "FTC-CAM-PT-G", available: true },
     ],
     images: [
       { src: "/img/pt-1.webp", alt: "Camiseta Boxy Preta, frente" },
@@ -157,7 +153,3 @@ export function getProduct(slug: string) {
 
 export const brl = (n: number) =>
   n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
-/** Texto de escassez por tamanho. */
-export const stockLabel = (n: number) =>
-  n <= 0 ? "Esgotado" : n === 1 ? "Última peça" : n <= 4 ? `Últimas ${n} peças` : `Restam ${n}`;

@@ -3,14 +3,13 @@
 import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { brl, LOTE_DEADLINE, stockLabel, type Product, type Size } from "@/lib/store";
+import { brl, type Product, type Size } from "@/lib/store";
 import FitFinder from "@/components/product/FitFinder";
 import TermsModal from "@/components/product/TermsModal";
 
 export default function ProductView({ p }: { p: Product }) {
   const [active, setActive] = useState(0);
-  const [size, setSize] = useState<Size>(p.sizes.find((s) => s.available && s.stock > 0)?.size ?? "P");
-  const current = p.sizes.find((s) => s.size === size);
+  const [size, setSize] = useState<Size>("P");
   const [terms, setTerms] = useState(false);
   const [fitOpen, setFitOpen] = useState(false);
   const [zoom, setZoom] = useState<{ x: number; y: number } | null>(null);
@@ -94,7 +93,7 @@ export default function ProductView({ p }: { p: Product }) {
             {p.sizes.map((s) => (
               <button
                 key={s.size}
-                disabled={!s.available || s.stock <= 0}
+                disabled={!s.available}
                 onClick={() => setSize(s.size)}
                 aria-pressed={size === s.size}
                 className={`relative flex size-14 items-center justify-center rounded-full border font-mono text-sm transition-colors ${
@@ -105,11 +104,6 @@ export default function ProductView({ p }: { p: Product }) {
               </button>
             ))}
           </div>
-          {current && (
-            <p className={`mt-3 font-mono text-[11px] tracking-[0.2em] uppercase ${current.stock <= 4 ? "text-red" : "text-ink-2"}`}>
-              {stockLabel(current.stock)} no {current.size} · Lote 001 encerra {LOTE_DEADLINE}
-            </p>
-          )}
         </fieldset>
 
         <button

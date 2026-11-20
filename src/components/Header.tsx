@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 import Marquee from "./Marquee";
 import { Wordmark, InstagramIcon } from "./Icons";
 import { TapeButton } from "./Brim";
-import { DIRECT_URL, INSTAGRAM_URL } from "@/lib/store";
+import { INSTAGRAM_URL } from "@/lib/store";
 
 // Colunas de navegação no estilo Brim: rótulo entre parênteses + duas linhas.
 const NAV = [
@@ -37,7 +37,7 @@ export default function Header() {
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
 
-          <Link href="/" aria-label="FeaT&Co — início" className="mx-auto md:mx-0 md:mr-6">
+          <Link href="/" aria-label="FeaT&Co — início" className="md:mr-6">
             <Wordmark invert className="h-6 w-auto sm:h-7" />
           </Link>
 
@@ -65,12 +65,10 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center justify-end gap-2 sm:gap-4">
-            <span className="hidden lg:block">
-              <TapeButton href={DIRECT_URL} external>
-                Fale no direct
-              </TapeButton>
-            </span>
+          <div className="ml-auto flex items-center justify-end gap-2 sm:gap-4">
+            <TapeButton href="/produtos" className="whitespace-nowrap !px-3 !py-2 !text-[10px] !tracking-[0.12em] sm:!tracking-[0.2em] sm:!px-6 sm:!py-2.5 sm:!text-[11px]">
+              Garantir a minha
+            </TapeButton>
           </div>
         </div>
       </div>
@@ -102,9 +100,7 @@ export default function Header() {
               ))}
             </ul>
             <div className="flex flex-wrap items-center gap-6 font-mono text-xs tracking-[0.2em] uppercase">
-              <TapeButton href={DIRECT_URL} external>
-                Fale no direct
-              </TapeButton>
+              <TapeButton href="/produtos">Garantir a minha</TapeButton>
               <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="flex items-center gap-2">
                 <InstagramIcon className="size-4" /> Instagram
               </a>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HERO, LOTE_DEADLINE } from "@/lib/store";
+import { HERO } from "@/lib/store";
 
 /**
  * Topo minimalista: uma foto grande e uma frase.
@@ -18,7 +18,7 @@ export default function Hero() {
         <div>
           <h1 className="max-w-xl font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1]">Seu essencial.</h1>
           <p className="mt-4 font-mono text-[11px] tracking-[0.25em] text-paper/80 uppercase">
-            Lote 001 encerra {LOTE_DEADLINE} · Sem reposição
+            Lote 001 · Sem reposição
           </p>
         </div>
         <Link
